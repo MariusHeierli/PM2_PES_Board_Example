@@ -51,10 +51,13 @@ int main()
         if (do_execute_main_task) {
 
             if (mechanical_button.read()) {
-
-                // read analog input
-                //ir_distance_mV = ???;
-
+                AnalogIn ir_analog_in(PC_2);
+                float ir_distance_mV;
+                float ir_distance_mm;
+                ir_distance_mV = 1.0e3f * ir_analog_in.read() * 3.3f;
+                printf("%f\n",ir_distance_mV)
+                //ir_distance_mm = ;
+                
             }
 
             // visual feedback that the main task is executed, setting this once would actually be enough
@@ -82,7 +85,7 @@ int main()
         thread_sleep_for(main_task_period_ms - main_task_elapsed_time_ms);
     }
 }
-
+//testtest
 void user_button_pressed_fcn()
 {
     // do_execute_main_task if the button was pressed
